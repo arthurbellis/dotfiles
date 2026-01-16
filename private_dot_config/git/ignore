@@ -29,3 +29,18 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+# Windows
+Thumbs.db
+desktop.ini
+
+# Files that might contain secrets
+.env
+.env.local
+*.pem
+*.key
+
+# Common local-only files
+.vscode/
+.idea/
+*.swp
+*~
