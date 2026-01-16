@@ -1,0 +1,29 @@
+{
+  "title": "Home → Cmd-Alt (⌘⌥)",
+  "rules": [
+    {
+      "description": "Home → Cmd-Alt (⌘⌥)",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "home",
+            "modifiers": {
+              "optional": [
+                "caps_lock"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_command",
+              "modifiers": [
+                "left_option"
+              ]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+  ]
+}

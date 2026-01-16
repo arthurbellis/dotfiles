@@ -1,0 +1,29 @@
+{
+  "title": "PgUp → Ctrl-Alt (^⌥)",
+  "rules": [
+    {
+      "description": "PgUp → Ctrl-Alt (^⌥)",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "page_up",
+            "modifiers": {
+              "optional": [
+                "caps_lock"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_control",
+              "modifiers": [
+                "left_option"
+              ]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+  ]
+}

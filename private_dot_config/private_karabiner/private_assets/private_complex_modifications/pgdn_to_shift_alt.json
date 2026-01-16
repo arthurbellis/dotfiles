@@ -1,0 +1,29 @@
+{
+  "title": "PgDn → Shift-Alt (shift-⌥)",
+  "rules": [
+    {
+      "description": "PgDn → Shift-Alt (shift-⌥)",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "page_down",
+            "modifiers": {
+              "optional": [
+                "caps_lock"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_shift",
+              "modifiers": [
+                "left_option"
+              ]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+  ]
+}
