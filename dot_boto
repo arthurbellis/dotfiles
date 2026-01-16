@@ -1,0 +1,4 @@
+# To make gsutil more stable on Mac OS
+[GSUtil]
+  parallel_process_count=1
+
