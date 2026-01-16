@@ -1,0 +1,35 @@
+LANG=en_US.UTF-8
+
+# history settings
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+alias ls='ls --color'
+
+alias vim=nvim
+alias vi=nvim
+export EDITOR=nvim
+
+hgrep() { fc -Dlim "*$@*" 1 }
+
+typeset -gU chpwd_functions
+
+# run ls -al after changing current directory
+my_chpwd_hook() { pwd; ls -a }
+chpwd_functions+=( my_chpwd_hook )
+
+# list all
+la() { ls -al }
+
+# if .zshrc.local exists, source it
+if [ -f ~/.zshrc.local ]; then
+    source ~/.zshrc.local
