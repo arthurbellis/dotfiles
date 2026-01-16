@@ -35,6 +35,8 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 zinit light zsh-users/zsh-syntax-highlighting
 
+
+#### Zsh completions
 # https://thevaluable.dev/zsh-completion-guide-examples/
 zinit light zsh-users/zsh-completions
 
@@ -45,10 +47,10 @@ if [[ ! -d "$COMP_DIR" ]]; then
 fi
 fpath=( "$COMP_DIR" "${fpath[@]}" )
 
-if [[ ! -f "$COMP_DIR/_gh" ]]; then
+## github cli completion
+if command -v gh &> /dev/null && [[ ! -f "$COMP_DIR/_gh" ]]; then
 	gh completion --shell zsh > "$COMP_DIR/_gh"
 fi
-
 
 autoload -U compinit && compinit -u
 zinit cdreplay -q
@@ -59,6 +61,7 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
+
 zinit light Aloxaf/fzf-tab
 
 
@@ -68,30 +71,50 @@ bindkey '^y' autosuggest-accept
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
+
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
 zinit snippet OMZP::dotenv
 
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+
 alias ls='ls --color'
+alias la='ls -al'
 
 alias vim=nvim
 alias vi=nvim
 export EDITOR=nvim
 
+
 hgrep() { fc -Dlim "*$@*" 1 }
 
+
+## Change directory hook
 typeset -gU chpwd_functions
 
 # run ls -al after changing current directory
 my_chpwd_hook() { pwd; ls -a }
 chpwd_functions+=( my_chpwd_hook )
 
-# list all
-la() { ls -al }
+
+## zoxide setup
+if command -v zoxide &> /dev/null; then
+    eval "$(zoxide init --cmd cd zsh)"
+fi
+
+
+## gcloud
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then
+    source "$HOME/google-cloud-sdk/path.zsh.inc"
+    alias gcp-set="gcloud config configurations activate"
+    alias gcp-what="gcloud config list"
+    alias gcp-list="gcloud config configurations list"
+fi
+
 
 # if .zshrc.local exists, source it
 if [ -f ~/.zshrc.local ]; then
