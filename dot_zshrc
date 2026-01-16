@@ -20,6 +20,8 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
+
+## Zinit (Zsh plugin manager) installation and setup
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
 if [ ! -d "$ZINIT_HOME" ]; then
@@ -30,6 +32,46 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 zinit ice depth=1; zinit light romkatv/powerlevel10k
+
+zinit light zsh-users/zsh-syntax-highlighting
+
+# https://thevaluable.dev/zsh-completion-guide-examples/
+zinit light zsh-users/zsh-completions
+
+# Handle some custom completions
+local COMP_DIR="$ZSH_CACHE_DIR/completions"
+if [[ ! -d "$COMP_DIR" ]]; then
+	mkdir -p "$COMP_DIR" 
+fi
+fpath=( "$COMP_DIR" "${fpath[@]}" )
+
+if [[ ! -f "$COMP_DIR/_gh" ]]; then
+	gh completion --shell zsh > "$COMP_DIR/_gh"
+fi
+
+
+autoload -U compinit && compinit -u
+zinit cdreplay -q
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s/:/)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+
+zinit light Aloxaf/fzf-tab
+
+
+zinit light zsh-users/zsh-autosuggestions
+bindkey -e
+bindkey '^y' autosuggest-accept
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+
+zinit snippet OMZP::git
+zinit snippet OMZP::sudo
+zinit snippet OMZP::command-not-found
+zinit snippet OMZP::dotenv
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
