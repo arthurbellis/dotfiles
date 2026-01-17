@@ -1,3 +1,5 @@
+tap "domt4/autoupdate"
+
 tap "hashicorp/tap"
 brew "hashicorp/tap/terraform"
 

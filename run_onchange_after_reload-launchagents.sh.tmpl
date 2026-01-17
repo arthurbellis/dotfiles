@@ -1,0 +1,12 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+
+# Plist hash: {{ include "private_Library/private_LaunchAgents/jp.ellis.cleanup_downloads.plist.tmpl" | sha256sum }}
+echo "Reloading Cleanup Downloads LaunchAgent..."
+
+PLIST="{{ .chezmoi.homeDir }}/Library/LaunchAgents/jp.ellis.cleanup_downloads.plist"
+
+# Unload if already running, then load the new version
+launchctl unload "$PLIST" 2>/dev/null
+launchctl load "$PLIST"
+{{ end -}}

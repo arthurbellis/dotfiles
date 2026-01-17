@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>jp.ellis.cleanup-downloads</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/find</string>
+        <string>{{ .chezmoi.homeDir }}/Downloads</string>
+        <string>-type</string>
+        <string>f</string>
+        <string>-mtime</string>
+        <string>+30</string>
+        <string>-delete</string>
+    </array>
+    <key>StandardOutPath</key>
+    <string>/tmp/jp.ellis.{{ .chezmoi.username }}.stdout</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/jp.ellis.{{ .chezmoi.username }}.stdout</string>
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>10</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+</dict>
+</plist>
