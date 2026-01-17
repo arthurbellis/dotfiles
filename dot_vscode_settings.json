@@ -56,9 +56,7 @@
     "editor.unicodeHighlight.invisibleCharacters": false
   },
   "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono",
-  "github.copilot.advanced": {
-    "authProvider": "github"
-  },
+  "github.copilot.advanced": {},
   "terminal.integrated.allowedLinkSchemes": [
     "file",
     "http",
@@ -71,5 +69,6 @@
   "redhat.telemetry.enabled": true,
   "terminal.integrated.inheritEnv": false,
   "github.copilot.nextEditSuggestions.enabled": true,
-  "git.replaceTagsWhenPull": true
+  "git.replaceTagsWhenPull": true,
+  "chat.useAgentSkills": true
 }
