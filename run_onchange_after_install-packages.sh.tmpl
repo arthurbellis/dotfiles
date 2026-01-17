@@ -1,0 +1,17 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+
+# Brewfile hash: {{ include "private_dot_config/homebrew/Brewfile" | sha256sum }}
+echo "Brewfile changed, updating Homebrew packages..."
+
+# Define the target path
+BREWFILE="{{ joinPath .chezmoi.homeDir ".config/homebrew/Brewfile" }}"
+
+# Run brew bundle
+if [ -f "$BREWFILE" ]; then
+    brew bundle install --cleanup --file="$BREWFILE"
+else
+    echo "Error: Brewfile not found at $BREWFILE"
+    exit 1
+fi
+{{ end -}}
