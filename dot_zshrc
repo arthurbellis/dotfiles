@@ -89,6 +89,8 @@ alias vim=nvim
 alias vi=nvim
 export EDITOR=nvim
 
+alias cm=chezmoi
+
 
 hgrep() { fc -Dlim "*$@*" 1 }
 
