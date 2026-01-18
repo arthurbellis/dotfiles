@@ -1,3 +1,6 @@
+install.sh
+.vscode_settings.json
+
 {{ if ne .chezmoi.os "darwin" }}
 Library/
 {{ end }}
