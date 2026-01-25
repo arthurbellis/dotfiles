@@ -1,0 +1,29 @@
+#!/bin/bash
+
+{{ if eq .chezmoi.osRelease.id "arch" -}}
+
+if ! command -v yay &> /dev/null; then
+    echo "Arch Linux detected. Installing yay..."
+    
+    # Install dependencies
+    sudo pacman -S --needed base-devel git --noconfirm
+    
+    # Build yay in a temporary directory
+    BUILD_DIR=$(mktemp -d)
+    git clone https://aur.archlinux.org/yay.git "$BUILD_DIR"
+    cd "$BUILD_DIR"
+    
+    # makepkg cannot be run as root; sudo -u handles permissions if script is run as root
+    makepkg -si --noconfirm
+    
+    # Cleanup
+    rm -rf "$BUILD_DIR"
+else
+    echo "yay is already installed. Skipping."
+fi
+
+{{ else -}}
+
+echo "Not an Arch Linux system. Skipping yay installation."
+
+{{ end -}}
