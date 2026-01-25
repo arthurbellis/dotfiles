@@ -95,14 +95,14 @@ export EDITOR=nvim
 alias cm=chezmoi
 
 
-hgrep() { fc -Dlim "*$@*" 1 }
+hgrep() { fc -Dlim "*$@*" 1; }
 
 
 ## Change directory hook
 typeset -gU chpwd_functions
 
 # run ls -al after changing current directory
-my_chpwd_hook() { pwd; ls -a }
+my_chpwd_hook() { pwd; ls -a; }
 chpwd_functions+=( my_chpwd_hook )
 
 
@@ -113,8 +113,8 @@ fi
 
 
 ## Google Cloud SDK
-if [ -f opt/homebrew/share/google-cloud-sdk/completion.zsh.inc ]; then
-    source opt/homebrew/share/google-cloud-sdk/completion.zsh.inc
+if [ -f /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc ]; then
+    source /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc
 fi
 
 if [ -f /opt/homebrew/share/google-cloud-sdk/path.zsh.inc ]; then
@@ -125,6 +125,9 @@ alias gcp-set="gcloud config configurations activate"
 alias gcp-what="gcloud config list"
 alias gcp-list="gcloud config configurations list"
 
+{{- if .is_wsl }}
+export GIT_SSH_COMMAND="ssh.exe"
+{{- end }}
 
 # if .zshrc.local exists, source it
 if [ -f ~/.zshrc.local ]; then

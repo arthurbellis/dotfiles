@@ -1,9 +1,18 @@
 {{- $email := promptStringOnce . "email" "What is your email address" -}}
 {{- $name := promptStringOnce . "name" "What is your name" -}}
 
+{{- $isWSL := false -}}
+{{- if .chezmoi.kernel -}}
+    {{- if contains "microsoft-standard" .chezmoi.kernel.osrelease -}}
+         {{- $isWSL = true -}}
+   {{- end -}}
+{{- end -}}
+
+
 [data]
     email = {{ $email | quote }}
     name = {{ $name | quote }}
+    is_wsl = {{ $isWSL }}
 
 [diff]
     command = "nvim"
