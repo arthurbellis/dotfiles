@@ -226,3 +226,7 @@ run = ['move-node-to-workspace T']
 [[on-window-detected]]
 if.app-id = 'com.1password.1password' # 1Password
 run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'com.google.chrome.for.testing'
+run = ['layout floating', 'move-node-to-monitor 1']

@@ -133,3 +133,7 @@ export GIT_SSH_COMMAND="ssh.exe"
 if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
 fi
+
+eval "$(mise activate zsh)"
+export PATH="$PATH:/Users/brad/.local/bin"
+

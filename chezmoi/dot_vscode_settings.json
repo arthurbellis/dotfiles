@@ -70,5 +70,8 @@
   "terminal.integrated.inheritEnv": false,
   "github.copilot.nextEditSuggestions.enabled": true,
   "git.replaceTagsWhenPull": true,
-  "chat.useAgentSkills": true
+  "chat.useAgentSkills": true,
+  "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
+  "chat.agent.maxRequests": 100,
+  "editor.accessibilitySupport": "on"
 }
