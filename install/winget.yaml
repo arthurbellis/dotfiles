@@ -1,0 +1,103 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+properties:
+  configurationVersion: 0.2
+  resources:
+    # --- Infrastructure & Shell ---
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: PowerShell
+      settings:
+        id: Microsoft.PowerShell
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: WindowsTerminal
+      settings:
+        id: Microsoft.WindowsTerminal
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: WSL
+      settings:
+        id: Microsoft.WSL
+        source: winget
+
+    # --- Development Tools ---
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Git
+      settings:
+        id: Git.Git
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: VSCode
+      settings:
+        id: Microsoft.VisualStudioCode
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: DockerDesktop
+      settings:
+        id: Docker.DockerDesktop
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Neovim
+      settings:
+        id: Neovim.Neovim
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Chezmoi
+      settings:
+        id: twpayne.chezmoi
+        source: winget
+
+    # --- Browsers ---
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Chrome
+      settings:
+        id: Google.Chrome
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Edge
+      settings:
+        id: Microsoft.Edge
+        source: winget
+
+    # --- System Utilities & Productivity ---
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: PowerToys
+      settings:
+        id: Microsoft.PowerToys
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: OnePassword
+      settings:
+        id: AgileBits.1Password
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: SharpKeys
+      settings:
+        id: RandyRants.SharpKeys
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: AutoHotkey
+      settings:
+        id: AutoHotkey.AutoHotkey
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: GlazeWM
+      settings:
+        id: glzr-io.glazewm
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Alacritty
+      settings:
+        id: Alacritty.Alacritty
+        source: winget
