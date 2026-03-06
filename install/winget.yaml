@@ -79,6 +79,12 @@ properties:
         source: winget
 
     - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: OnePasswordCLI
+      settings:
+        id: AgileBits.1Password.CLI
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: SharpKeys
       settings:
         id: RandyRants.SharpKeys
