@@ -12,3 +12,9 @@ style = "Bold"
 [font.italic]
 family = "FiraCode Nerd Font"
 style = "Italic"
+
+{{ if eq .chezmoi.os "windows" }}
+[shell]
+program = "pwsh"
+{{ end }}
+
