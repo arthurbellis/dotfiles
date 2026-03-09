@@ -1,6 +1,7 @@
 #!/bin/bash
 
-{{ if eq .chezmoi.osRelease.id "arch" -}}
+{{ $osID := dig "chezmoi" "osRelease" "id" nil . -}}
+{{ if eq $osID "arch" -}}
 
 if ! command -v yay &> /dev/null; then
     echo "Arch Linux detected. Installing yay..."

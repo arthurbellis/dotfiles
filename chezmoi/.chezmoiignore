@@ -8,3 +8,8 @@ Library/
 {{ if ne .chezmoi.os "windows" }}
 AppData/
 {{ end }}
+
+
+{{ if eq .chezmoi.os "windows" }}
+*.sh
+{{ end }}
