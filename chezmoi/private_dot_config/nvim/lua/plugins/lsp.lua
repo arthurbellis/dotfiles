@@ -23,7 +23,7 @@ return {
     config = function()
       require('mason').setup()
       require('mason-lspconfig').setup({
-        ensure_installed = { 'clangd', 'lua_ls', 'docker_compose_language_service', 'yamlls', 'pylsp' }
+        ensure_installed = { 'lua_ls', 'docker_compose_language_service', 'yamlls', 'pylsp' }
       })
 
       vim.lsp.enable('yamlls')
