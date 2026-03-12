@@ -132,9 +132,10 @@ workspaces:
   - name: '8'
   - name: '9'
   - name: '0'
-  - name: 't'
-  - name: 'm'
   - name: 'c'
+  - name: 'm'
+  - name: 'n'
+  - name: 't'
 
 window_rules:
   - commands: ['ignore']
@@ -253,17 +254,13 @@ keybindings:
   - commands: ['close']
     bindings: ['alt+shift+q']
 
-  # Kill GlazeWM process safely.
-  - commands: ['wm-exit']
-    bindings: ['alt+shift+e']
-
   # Re-evaluate configuration file.
   - commands: ['wm-reload-config']
     bindings: ['alt+shift+r']
 
   # Redraw all windows.
   - commands: ['wm-redraw']
-    bindings: ['alt+shift+w']
+    bindings: ['alt+shift+e']
 
 
   # Focus the next/previous active workspace defined in `workspaces` config.
@@ -327,29 +324,34 @@ keybindings:
   - commands: ['move --workspace 0', 'focus --workspace 0']
     bindings: ['alt+shift+0']
 
-  - commands: ['focus --workspace t']
-    bindings: ['alt+t']
-  - commands: ['move --workspace t', 'focus --workspace t']
-    bindings: ['alt+shift+t']
+  - commands: ['focus --workspace c']
+    bindings: ['alt+c']
+  - commands: ['move --workspace c', 'focus --workspace c']
+    bindings: ['alt+shift+c']
 
   - commands: ['focus --workspace m']
     bindings: ['alt+m']
   - commands: ['move --workspace m', 'focus --workspace m']
     bindings: ['alt+shift+m']
 
-  - commands: ['focus --workspace c']
-    bindings: ['alt+c']
-  - commands: ['move --workspace c', 'focus --workspace c']
-    bindings: ['alt+shift+c']
+  - commands: ['focus --workspace n']
+    bindings: ['alt+n']
+  - commands: ['move --workspace n', 'focus --workspace n']
+    bindings: ['alt+shift+n']
+
+  - commands: ['focus --workspace t']
+    bindings: ['alt+t']
+  - commands: ['move --workspace t', 'focus --workspace t']
+    bindings: ['alt+shift+t']
 
   # Move the focused window's parent workspace to a monitor in a given
   # direction.
   - commands: ['move-workspace --direction left']
     bindings: ['alt+shift+a']
   - commands: ['move-workspace --direction right']
-    bindings: ['alt+shift+f']
-  - commands: ['move-workspace --direction up']
     bindings: ['alt+shift+d']
+  - commands: ['move-workspace --direction up']
+    bindings: ['alt+shift+w']
   - commands: ['move-workspace --direction down']
     bindings: ['alt+shift+s']
 {{- end }}
