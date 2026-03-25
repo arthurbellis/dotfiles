@@ -135,6 +135,7 @@ workspaces:
   - name: 'c'
   - name: 'm'
   - name: 'n'
+  - name: 's'
   - name: 't'
 
 window_rules:
@@ -239,8 +240,8 @@ keybindings:
     bindings: ['alt+shift+space']
 
   # Change the focused window to be tiling.
-  - commands: ['toggle-tiling']
-    bindings: ['alt+t']
+  # - commands: ['toggle-tiling']
+  #  bindings: ['alt+t']
 
   # Change the focused window to be fullscreen.
   - commands: ['toggle-fullscreen']
@@ -339,6 +340,11 @@ keybindings:
   - commands: ['move --workspace n', 'focus --workspace n']
     bindings: ['alt+shift+n']
 
+  - commands: ['focus --workspace s']
+    bindings: ['alt+s']
+  - commands: ['move --workspace s', 'focus --workspace s']
+    bindings: ['alt+shift+s']
+
   - commands: ['focus --workspace t']
     bindings: ['alt+t']
   - commands: ['move --workspace t', 'focus --workspace t']
@@ -347,11 +353,11 @@ keybindings:
   # Move the focused window's parent workspace to a monitor in a given
   # direction.
   - commands: ['move-workspace --direction left']
-    bindings: ['alt+shift+a']
+    bindings: ['alt+ctrl+shift+a']
   - commands: ['move-workspace --direction right']
-    bindings: ['alt+shift+d']
+    bindings: ['alt+ctrl+shift+d']
   - commands: ['move-workspace --direction up']
-    bindings: ['alt+shift+w']
+    bindings: ['alt+ctrl+shift+w']
   - commands: ['move-workspace --direction down']
-    bindings: ['alt+shift+s']
+    bindings: ['alt+ctrl+shift+s']
 {{- end }}
