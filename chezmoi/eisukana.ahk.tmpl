@@ -1,0 +1,59 @@
+{{- if eq .chezmoi.os "windows" -}}
+#Requires AutoHotkey v2.0
+#SingleInstance Force
+
+; --- Track whether Alt was used as a modifier ---
+global LAltUsed := false
+global RAltUsed := false
+
+IME_SET(SetSts, WinTitle:="A") {
+    if !(WinActive(WinTitle))
+        return -1
+
+    hwnd := WinGetID
+    ptrSize := !A_PtrSize ? 4 : A_PtrSize
+    cbSize:=4+4+(PtrSize*6)+16
+    stGTI := Buffer(cbSize, 0)
+    NumPut("UInt", cbSize, stGTI, 0)   ;	DWORD   cbSize;
+    hwnd := DllCall("GetGUIThreadInfo", "Uint",0, "Uint", stGTI.Ptr)
+                ? NumGet(stGTI,8+PtrSize,"UInt") : hwnd
+
+    return DllCall("SendMessage"
+          , "UInt", DllCall("imm32\ImmGetDefaultIMEWnd", "Uint",hwnd)
+          , "UInt", 0x0283  ;Message : WM_IME_CONTROL
+          ,  "Int", 0x006   ;wParam  : IMC_SETOPENSTATUS
+          ,  "Int", SetSts) ;lParam  : 0 or 1
+}
+
+
+; ---------- LEFT ALT ----------
+~LAlt:: {
+    LAltUsed := false
+}
+
+~LAlt & *:: {
+    LAltUsed := true
+}
+
+~LAlt Up:: {
+    if (!LAltUsed) {
+	IME_SET(0)
+    }
+}
+
+; ---------- RIGHT ALT ----------
+~RAlt:: {
+    RAltUsed := false
+}
+
+~RAlt & *:: {
+    RAltUsed := true
+}
+
+~RAlt Up:: {
+    if (!RAltUsed) {
+        ; IME ON → Japanese (ひらがな)
+        Send "{vkF2sc070}"
+    }
+}
+{{- end -}}
