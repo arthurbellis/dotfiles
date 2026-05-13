@@ -29,13 +29,14 @@ IME_SET(SetSts, WinTitle:="A") {
 ; ---------- LEFT ALT ----------
 ~LAlt:: {
     LAltUsed := false
+    Send "{Blind}{vkE8}"
 }
 
 ~LAlt & *:: {
     LAltUsed := true
 }
 
-~LAlt Up:: {
+~*LAlt Up:: {
     if (!LAltUsed) {
 	IME_SET(0)
     }
@@ -44,13 +45,14 @@ IME_SET(SetSts, WinTitle:="A") {
 ; ---------- RIGHT ALT ----------
 ~RAlt:: {
     RAltUsed := false
+    Send "{Blind}{vkE8}"
 }
 
 ~RAlt & *:: {
     RAltUsed := true
 }
 
-~RAlt Up:: {
+~*RAlt Up:: {
     if (!RAltUsed) {
         ; IME ON → Japanese (ひらがな)
         Send "{vkF2sc070}"

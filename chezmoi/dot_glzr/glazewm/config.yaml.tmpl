@@ -137,6 +137,8 @@ workspaces:
   - name: 'n'
   - name: 's'
   - name: 't'
+  - name: 'o'
+  - name: 'p'
 
 window_rules:
   - commands: ['ignore']
@@ -349,6 +351,16 @@ keybindings:
     bindings: ['alt+t']
   - commands: ['move --workspace t', 'focus --workspace t']
     bindings: ['alt+shift+t']
+
+  - commands: ['focus --workspace o']
+    bindings: ['alt+o']
+  - commands: ['move --workspace o', 'focus --workspace o']
+    bindings: ['alt+shift+o']
+
+  - commands: ['focus --workspace p']
+    bindings: ['alt+p']
+  - commands: ['move --workspace p', 'focus --workspace p']
+    bindings: ['alt+shift+p']
 
   # Move the focused window's parent workspace to a monitor in a given
   # direction.
